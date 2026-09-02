@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@playwright/test": "^1.62.1",
     "intersection-observer": "^0.12.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
@@ -29,18 +28,5 @@
     "globals": "^17.6.0",
     "json-server": "^1.0.0-beta.15",
     "vite": "^8.0.12"
-  },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "main": "eslint.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hamna469/Cafe.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hamna469/Cafe/issues"
-  },
-  "homepage": "https://github.com/hamna469/Cafe#readme"
+  }
 }

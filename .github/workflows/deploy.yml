@@ -1,0 +1,70 @@
+name: 🚀 Deploy Brew Heaven
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Code clone
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # 2. Python setup
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          pip install django
+      
+      # 4. Run migrations
+      - name: Run migrations
+        run: |
+          cd backend
+          python manage.py migrate
+      
+      # 5. ⭐ HEADLESS TESTS
+      - name: Run headless tests
+        run: |
+          cd backend
+          python manage.py test
+      
+      # 6. 🚀 DEPLOY (Free - GitHub Pages)
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./backend
+          publish_branch: gh-pages
+      
+      # 7. Deploy to Vercel (Optional - FREE)
+      # - name: Deploy to Vercel
+      #   if: success()
+      #   uses: amondnet/vercel-action@v20
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      
+      # 8. Success message
+      - name: Deployment Status
+        if: success()
+        run: echo "✅ Brew Heaven deployed successfully!"
+      
+      # 9. Failure message
+      - name: Deployment Status
+        if: failure()
+        run: echo "❌ Tests failed! Deployment stopped."
