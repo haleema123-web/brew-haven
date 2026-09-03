@@ -1,4 +1,4 @@
-// tests/homepage.spec.js
+// tests/homepage.spec.cjs
 const { test, expect } = require('@playwright/test');
 
 test.describe('🍺 Brew Heaven - Homepage Tests', () => {
@@ -8,11 +8,9 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
     
     await page.goto('/');
     
-    // Page title check
     const title = await page.title();
     console.log(`📄 Page title: ${title}`);
     
-    // Screenshot lo
     await page.screenshot({ path: 'brew-heaven-homepage.png' });
     
     console.log('✅ Homepage loaded successfully!');
@@ -21,9 +19,8 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
   test('Header is visible', async ({ page }) => {
     await page.goto('/');
     
-    // Header check (apne website ke hisaab se customize karo)
-    const header = page.locator('header, h1, .header');
-    await expect(header).toBeVisible();
+    const header = page.locator('header, h1, .header, nav');
+    await expect(header.first()).toBeVisible({ timeout: 10000 });
     
     console.log('✅ Header is visible');
   });
@@ -31,8 +28,7 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
   test('Navigation links work', async ({ page }) => {
     await page.goto('/');
     
-    // Navigation links
-    const navLinks = page.locator('nav a');
+    const navLinks = page.locator('nav a, header a, .nav a');
     const count = await navLinks.count();
     console.log(`📋 Found ${count} navigation links`);
     

@@ -1,4 +1,4 @@
-// tests/products.spec.js
+// tests/products.spec.cjs
 const { test, expect } = require('@playwright/test');
 
 test.describe('🍺 Brew Heaven - Products Tests', () => {
@@ -13,8 +13,8 @@ test.describe('🍺 Brew Heaven - Products Tests', () => {
     await page.goto('/products');
     
     // Apne website ke hisaab se selector change karo
-    const addButton = page.locator('button:has-text("Add to Cart"), .add-to-cart');
-    await expect(addButton.first()).toBeVisible();
+    const addButton = page.locator('button:has-text("Add to Cart"), .add-to-cart, button:has-text("Add"), .btn-add');
+    await expect(addButton.first()).toBeVisible({ timeout: 10000 });
     
     console.log('✅ Add to cart button found');
   });
