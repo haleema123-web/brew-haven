@@ -22,12 +22,10 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
   test('Navigation links work', async ({ page }) => {
     await page.goto('/');
     
-    // Find all links on page
     const allLinks = page.locator('a[href]');
     const totalLinks = await allLinks.count();
     console.log(`📋 Total links on page: ${totalLinks}`);
     
-    // Try multiple navigation selectors
     const navSelectors = [
       'nav a', 'header a', '.nav a', '.navbar a',
       '[class*="nav"] a', '[role="navigation"] a',
@@ -46,7 +44,6 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
     
     console.log(`📋 Total navigation links found: ${foundNavLinks}`);
     
-    // If no navigation links found, check if page has any links
     if (foundNavLinks === 0) {
       console.log(`ℹ️ Total links on page: ${totalLinks}`);
       expect(totalLinks).toBeGreaterThan(0);
@@ -55,5 +52,16 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
       expect(foundNavLinks).toBeGreaterThan(0);
       console.log('✅ Navigation links found');
     }
+  });
+
+  // ✅ Sir ke liye intentional error test
+  test('ERROR: Intentional error for screenshot/video demo', async ({ page }) => {
+    await page.goto('/');
+    await page.screenshot({ path: 'intentional-error-page.png' });
+    console.log('🔄 Running intentional error test...');
+    
+    // Ye error generate karega
+    const nonExistentElement = page.locator('#this-element-does-not-exist-xyz');
+    await expect(nonExistentElement).toBeVisible({ timeout: 5000 });
   });
 });
