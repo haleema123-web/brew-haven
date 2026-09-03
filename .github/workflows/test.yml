@@ -32,8 +32,8 @@ jobs:
       env:
         DISPLAY: :99
         
-    - name: Run Playwright tests (Headed mode with screenshots & videos)
-      run: npx playwright test --workers=2 --headed --trace=on --video=on
+    - name: Run Playwright tests (Headed mode)
+      run: npx playwright test --workers=2 --headed
       env:
         CI: true
         DISPLAY: :99
@@ -45,6 +45,6 @@ jobs:
         path: |
           test-results/
           playwright-report/
-          *.png
-          *.mp4
+          **/*.png
+          **/*.mp4
         retention-days: 30

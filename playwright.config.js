@@ -14,10 +14,10 @@ export default defineConfig({
   
   use: {
     baseURL: 'https://haleema123-web.github.io/brew-haven/',
-    trace: 'on',              // ✅ Har test ka trace
-    screenshot: 'on',         // ✅ Har test ka screenshot
-    video: 'on',              // ✅ Har test ki video
-    headless: false,          // ✅ Headed mode (browser visible)
+    trace: 'on',              
+    screenshot: 'on',         
+    video: 'on-first-retry',  // ✅ Sirf failed tests ki video (recommended)
+    headless: false,          
     actionTimeout: 15000,
     navigationTimeout: 15000,
   },
