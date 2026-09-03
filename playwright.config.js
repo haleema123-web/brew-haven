@@ -9,7 +9,8 @@ export default defineConfig({
   reporter: 'html',
   
   use: {
-    baseURL: 'http://localhost:5173',  // Local dev server
+    // ✅ Deployed website URL
+    baseURL: 'https://haleema123-web.github.io/brew-haven/',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     headless: true,
