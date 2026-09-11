@@ -1,5 +1,5 @@
-// tests/homepage.spec.cjs
-const { test, expect } = require('@playwright/test');
+// tests/homepage.spec.js
+import { test, expect } from '@playwright/test';
 
 test.describe('🍺 Brew Heaven - Homepage Tests', () => {
   
@@ -54,14 +54,4 @@ test.describe('🍺 Brew Heaven - Homepage Tests', () => {
     }
   });
 
-  // ✅ Sir ke liye intentional error test
-  test('ERROR: Intentional error for screenshot/video demo', async ({ page }) => {
-    await page.goto('/');
-    await page.screenshot({ path: 'intentional-error-page.png' });
-    console.log('🔄 Running intentional error test...');
-    
-    // Ye error generate karega
-    const nonExistentElement = page.locator('#this-element-does-not-exist-xyz');
-    await expect(nonExistentElement).toBeVisible({ timeout: 5000 });
-  });
 });

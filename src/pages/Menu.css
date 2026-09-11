@@ -1,0 +1,127 @@
+/* Main Layout */
+.main {
+  padding: 20px;
+}
+
+.menu-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.small-title {
+  color: #6f4e37;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.menu-subtitle {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Card Style */
+.menu-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eee;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #f5f5f5;
+}
+
+.menu-content {
+  padding: 20px;
+}
+
+.menu-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.menu-content p {
+  color: #666;
+  margin: 0 0 15px 0;
+  font-size: 0.9rem;
+}
+
+/* Bottom Section (Price + Buttons) */
+.menu-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-bottom > span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6f4e37;
+}
+
+/* ✅ FINAL BUTTON FIX */
+.btns {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btns button {
+  flex: 1 1 0; /* Equal width */
+  min-width: 0; /* Overflow control */
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Add to Cart Button (Brown) */
+.btns button:first-child {
+  background-color: #6f4e37;
+  color: white;
+}
+
+.btns button:first-child:hover {
+  background-color: #5a3d2c;
+}
+
+/* Place Order Button (Light Beige) */
+.btns button.order {
+  background-color: #f0e6dc;
+  color: #333;
+}
+
+.btns button.order:hover {
+  background-color: #e0d6cf;
+}
