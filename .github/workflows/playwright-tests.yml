@@ -38,7 +38,7 @@ jobs:
           npx wait-on http://127.0.0.1:5173/brew-haven/ --timeout 90000
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --update-snapshots
         env:
           CI: true
 
