@@ -14,7 +14,7 @@
     "intersection-observer": "^0.12.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1",
+    "react-router-dom": "^7.18.3",
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
