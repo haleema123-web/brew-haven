@@ -36,14 +36,23 @@ jobs:
         run: |
           npm run dev -- --host 127.0.0.1 > vite.log 2>&1 &
           npx wait-on http://127.0.0.1:5173/brew-haven/ --timeout 90000
+
       - name: Run Playwright tests
         run: npx playwright test --update-snapshots
         env:
-        CI: true
+          CI: true
 
       - name: Show Vite logs (if tests fail)
         if: failure()
         run: cat vite.log
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
 
       - name: Upload Linux snapshots
         uses: actions/upload-artifact@v4
