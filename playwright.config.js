@@ -8,7 +8,9 @@ export default defineConfig({
   reporter: process.env.CI ? [['html'], ['github']] : 'html',
 
   use: {
-    baseURL: 'http://127.0.0.1:5173',
+    baseURL: process.env.CI 
+      ? 'http://127.0.0.1:5173/brew-haven/' 
+      : 'http://localhost:5173/brew-haven/',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
