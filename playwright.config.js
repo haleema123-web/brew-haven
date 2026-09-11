@@ -2,24 +2,15 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
-  reporter: [
-    ['html'],
-    ['json', { outputFile: 'test-results.json' }],
-    ['list']
-  ],
-  
+  timeout: 30000,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: process.env.CI ? [['html'], ['github']] : 'html',
+
   use: {
-    baseURL: 'https://haleema123-web.github.io/brew-haven/',
-    trace: 'on',              
-    screenshot: 'on',         
-    video: 'on-first-retry',  // ✅ Sirf failed tests ki video (recommended)
-    headless: false,          
-    actionTimeout: 15000,
-    navigationTimeout: 15000,
+    baseURL: 'http://127.0.0.1:5173',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
   },
 
   projects: [
